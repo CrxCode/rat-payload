@@ -24,9 +24,14 @@ public class AppContext extends Application {
     public void onCreate() {
         super.onCreate();
 
-        // Register kiosk mode.
+        instance = this;
 
-        // Turn on phone screen.
+        // Register kiosk mode.
+        registerKisoskModeScreenOffReceiver();
+
+        // Start Service.
+        startKioskService();
+
     }
 
     private void registerKisoskModeScreenOffReceiver() {
