@@ -11,11 +11,13 @@ import android.content.Intent;
 public class BootReceiver extends BroadcastReceiver {
 
     /*
-    * Start Main Activity.
+    * Start Kiosk Service Activity.
     *
     */
     @Override
     public void onReceive(Context context, Intent intent) {
+
+        //TODO: Change to start kiosk service later
         Intent intent1 = new Intent(context, MainActivity.class);
         intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent1);

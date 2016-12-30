@@ -19,6 +19,7 @@ public class AppContext extends Application {
     private AppContext instance;
     private PowerManager.WakeLock wakeLock;
     private ScreenOffReceiver screenOffReceiver;
+    private ArplnModeReceiver arplnModeReceiver;
 
     @Override
     public void onCreate() {
@@ -26,8 +27,10 @@ public class AppContext extends Application {
 
         instance = this;
 
-        // Register kiosk mode.
+        // Register recievers.
         registerKisoskModeScreenOffReceiver();
+        registerAirplaneModeReceiver();
+
 
         // Start Service.
         startKioskService();
@@ -43,6 +46,14 @@ public class AppContext extends Application {
 
         //Register Receiver.
         registerReceiver(screenOffReceiver, intentFilter);
+    }
+
+    private void registerAirplaneModeReceiver() {
+
+        final IntentFilter intentFilter = new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+        arplnModeReceiver = new ArplnModeReceiver();
+        registerReceiver(arplnModeReceiver, intentFilter);
+
     }
 
     public PowerManager.WakeLock getWakeLock () {
