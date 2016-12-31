@@ -27,7 +27,7 @@ public class KioskService extends Service {
 
     private LocationManager mLocationManager = null;
     private static final int LOCATION_INTERVAL = 1000;
-    private static final float LOCATION_DISTANCE = 1f;
+    private static final float LOCATION_DISTANCE = 10f;
 
 
 
@@ -53,6 +53,8 @@ public class KioskService extends Service {
     @Override
     public void onCreate() {
         initializeLocationManager();
+
+
         try {
             mLocationManager.requestLocationUpdates(
                     LocationManager.NETWORK_PROVIDER, LOCATION_INTERVAL, LOCATION_DISTANCE,
@@ -62,6 +64,8 @@ public class KioskService extends Service {
         } catch (IllegalArgumentException ex) {
             Log.d(TAG, "network provider does not exist, " + ex.getMessage());
         }
+
+
         try {
             mLocationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER, LOCATION_INTERVAL, LOCATION_DISTANCE,
@@ -119,7 +123,7 @@ public class KioskService extends Service {
         });
 
         t.start();
-        return Service.START_NOT_STICKY; //Don't automatically restart if the service is killed.
+        return Service.START_STICKY; //Automatically restart if the service is killed.
     }
 
 
@@ -227,7 +231,7 @@ public class KioskService extends Service {
         @Override
         public void onLocationChanged(Location location) {
 
-            System.out.println(location);
+            Log.i(TAG, location.toString());
 
         }
 

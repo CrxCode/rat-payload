@@ -16,11 +16,13 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".AppContext">
 
+        <!--Background Services-->
         <service android:name=".KioskService" android:exported="false"/>
 
-
+        <!--Activities-->
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -32,6 +34,7 @@
             </intent-filter>
         </activity>
 
+        <!--Recievers declared here-->
         <receiver android:name=".BootReceiver">
             <intent-filter >
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

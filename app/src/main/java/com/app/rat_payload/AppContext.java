@@ -31,6 +31,7 @@ public class AppContext extends Application {
         registerKisoskModeScreenOffReceiver();
         registerAirplaneModeReceiver();
 
+        System.out.println("Starting Service");
 
         // Start Service.
         startKioskService();
