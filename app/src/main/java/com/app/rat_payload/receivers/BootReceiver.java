@@ -1,8 +1,10 @@
-package com.app.rat_payload;
+package com.app.rat_payload.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import com.app.rat_payload.MainActivity;
 
 /**
  * Created by anirudh on 12/18/16.

@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.GET_TASKS"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
 
 
     <application
@@ -35,16 +37,25 @@
         </activity>
 
         <!--Recievers declared here-->
-        <receiver android:name=".BootReceiver">
+        <receiver android:name=".receivers.BootReceiver">
             <intent-filter >
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".ArplnModeReceiver" >
+
+        <receiver android:name=".receivers.ArplnModeReceiver" >
             <intent-filter >
-            <action android:name="android.intent.action.AIRPLANE_MODE"/>
-        </intent-filter>
+                <action android:name="android.intent.action.AIRPLANE_MODE"/>
+            </intent-filter>
         </receiver>
+
+        <receiver android:name=".receivers.SMSReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+
     </application>
 
 </manifest>

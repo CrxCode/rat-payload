@@ -1,4 +1,4 @@
-package com.app.rat_payload;
+package com.app.rat_payload.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
