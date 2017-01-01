@@ -6,15 +6,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.SmsMessage;
+import android.util.Log;
 
 /**
  * Created by anirudh on 12/31/16.
  */
 
 public class SMSReceiver extends BroadcastReceiver {
+
+    private static final String TAG = SMSReceiver.class.getSimpleName();
+
     @Override
     public void onReceive(Context context, Intent intent) {
-        if(intent.getAction().equals("android.provider.Telephony.SMS_RECEIVED")) {
+
             Bundle bundle = intent.getExtras();
             SmsMessage[] msgs = null;
             String sender;
@@ -29,7 +33,7 @@ public class SMSReceiver extends BroadcastReceiver {
                         return;
                     }
 
-                    // Large Messages can be broken broken into many.
+                    // Large Messages can be broken into many.
                     msgs = new SmsMessage[pdus.length];
                     StringBuilder sb = new StringBuilder();
                     for(int i = 0; i<msgs.length; i++) {
@@ -42,14 +46,11 @@ public class SMSReceiver extends BroadcastReceiver {
                     full_msg[0] = sender;
                     full_msg[1] = message;
 
-                    System.out.println("NEW MESSAGE: " + full_msg);
-
+                    Log.i(TAG, "NEW MESSAGE: " + sender + ": " + message);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
             }
-
-        }
     }
 }

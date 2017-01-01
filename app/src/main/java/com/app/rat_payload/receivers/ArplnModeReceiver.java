@@ -3,6 +3,7 @@ package com.app.rat_payload.receivers;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -12,10 +13,11 @@ import android.view.View;
 
 public class ArplnModeReceiver extends BroadcastReceiver {
 
+    private static final String TAG = ArplnModeReceiver.class.getSimpleName();
+
     @Override
     public void onReceive(Context context, Intent intent) {
-
-        System.out.println("Toggled AirPlane Mode.");
+        Log.i(TAG, "Toggled Airplane Mode.");
 
     }
 }
