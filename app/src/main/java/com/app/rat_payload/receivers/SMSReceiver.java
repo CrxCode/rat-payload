@@ -18,7 +18,7 @@ public class SMSReceiver extends BroadcastReceiver {
             Bundle bundle = intent.getExtras();
             SmsMessage[] msgs = null;
             String sender;
-            String[] full_msg = new String[1];
+            String[] full_msg = new String[2];
 
             if(bundle != null) {
 
